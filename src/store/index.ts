@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import moment from "moment";
 
-interface Transaction {
+export interface Transaction {
   label: string;
   date: Date;
   amount: number;

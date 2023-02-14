@@ -6,41 +6,36 @@
         <label>
           Nom:
           <input type="text" v-model="transaction.label" />
-          <span v-if="!transaction.label && showError"
-            >Veuillez entrer un nom</span
+          <span v-if="!transaction.label && showError" class="error"
+            >Veuillez entrer un nom de transaction</span
           >
         </label>
         <label>
           Date:
-          <input type="text" v-model="transaction.date" />
-          <span v-if="!transaction.label && showError"
+          <input type="date" v-model="transaction.date" />
+          <span v-if="!transaction.date && showError" class="error"
             >Veuillez entrer une date</span
           >
         </label>
         <label>
           Montant:
           <input type="number" v-model="transaction.amount" />
-          <span v-if="!transaction.label && showError"
+          <span v-if="!transaction.amount && showError" class="error"
             >Veuillez entrer un montant</span
           >
         </label>
       </div>
-      <button
-        type="submit"
-        :disabled="
-          !transaction.label || !transaction.date || !transaction.amount
-        "
-      >
-        Ajouter
-      </button>
+      <button type="submit">Ajouter</button>
     </form>
   </div>
 </template>
 
 <script lang="ts">
-import { mapMutations } from "vuex";
+import { defineComponent } from "vue";
+import store from "@/store/index";
 
-export default {
+export default defineComponent({
+  name: "createTransaction",
   data() {
     return {
       showError: false,
@@ -51,23 +46,27 @@ export default {
       },
     };
   },
+  computed: {},
   methods: {
-    ...mapMutations(["addTransaction"]),
-    handleSubmit() {
+    handleSubmit(): void {
       if (
-        !this.transaction.label ||
-        !this.transaction.date ||
-        !this.transaction.amount
+        this.transaction.label &&
+        this.transaction.date &&
+        this.transaction.amount
       ) {
-        this.showError = true;
-        return;
-      } else {
-        this.addTransaction(this.transaction);
-        this.transaction = { label: "", date: "", amount: 0 };
+        store.commit("addTransaction", this.transaction);
+        this.transaction = {
+          label: "",
+          date: "",
+          amount: 0,
+        };
+        console.log("dans le if");
         this.showError = false;
+      } else {
+        this.showError = true;
+        console.log("dans le else");
       }
     },
   },
-};
+});
 </script>
-<style lang="scss"></style>

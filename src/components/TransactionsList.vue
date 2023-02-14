@@ -1,7 +1,6 @@
 <template>
   <div class="transaction-list">
     <h1>Transaction list</h1>
-    {{ count }}
   </div>
 </template>
 
