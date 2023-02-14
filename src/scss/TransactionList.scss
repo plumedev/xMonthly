@@ -1,0 +1,39 @@
+#transactions-list {
+    margin-top: 25px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 15px;
+    border-radius: 6px;
+    .column-label {
+        display: grid;
+        grid-template-columns: 30% 30% 30%;
+        h3:last-of-type {
+            text-align: end;
+        }
+
+    }
+    ul {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        li {
+            display: grid;
+            grid-template-columns: 30% 30% 30%;
+            list-style: none;
+            height: 38px;
+            padding-top: 15px;
+            border-bottom: 1px #F3F3F3 solid;
+            font-size: 1.125rem;
+            .label {
+                font-weight: 500;
+            }
+            .date {
+                color: #72727D;
+            }
+            .amount {
+                font-weight: 900;
+                text-align: end;
+            }
+        }
+
+    }
+}
