@@ -33,6 +33,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import store from "@/store/index";
+import { useStore } from "vuex";
 
 export default defineComponent({
   name: "createTransaction",
@@ -46,7 +47,13 @@ export default defineComponent({
       },
     };
   },
-  computed: {},
+  computed: {
+    saveTransactionsToLocalstorage() {
+      const transactions = store.state.transactions;
+      localStorage.setItem("transactions", JSON.stringify(transactions));
+      return transactions;
+    },
+  },
   methods: {
     handleSubmit(): void {
       if (
@@ -55,16 +62,15 @@ export default defineComponent({
         this.transaction.amount
       ) {
         store.commit("addTransaction", this.transaction);
+        this.saveTransactionsToLocalstorage;
         this.transaction = {
           label: "",
           date: "",
           amount: 0,
         };
-        console.log("dans le if");
         this.showError = false;
       } else {
         this.showError = true;
-        console.log("dans le else");
       }
     },
   },
