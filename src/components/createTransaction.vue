@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import store from "@/store/index";
+import store, { Transaction } from "@/store/index";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -48,7 +48,7 @@ export default defineComponent({
     };
   },
   computed: {
-    saveTransactionsToLocalstorage() {
+    saveTransactionsToLocalstorage(): Transaction[] {
       const transactions = store.state.transactions;
       localStorage.setItem("transactions", JSON.stringify(transactions));
       return transactions;
@@ -72,6 +72,9 @@ export default defineComponent({
       } else {
         this.showError = true;
       }
+    },
+    deletedTransaction(): void {
+      store.commit("deleteTransaction", this.transaction);
     },
   },
 });

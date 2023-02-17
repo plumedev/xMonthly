@@ -7,13 +7,6 @@ export interface Transaction {
   amount: number;
 }
 
-const transactions = [
-  // eslint-disable-next-line
-  { label: "Billets d'avion Vienne", date: new Date(), amount: 100 },
-  { label: "Bague chat", date: new Date(), amount: 200 },
-  { label: "Transaction 3", date: new Date(), amount: 300 },
-];
-
 const store = createStore({
   state: {
     transactions: [] as Transaction[],
@@ -29,6 +22,9 @@ const store = createStore({
     },
   },
   mutations: {
+    setTransactions(state, transactions: Transaction[]) {
+      state.transactions = transactions;
+    },
     addTransaction(state, transaction: Transaction) {
       state.transactions.push(transaction);
     },
@@ -44,12 +40,20 @@ const store = createStore({
       );
     },
   },
-  actions: {},
+  actions: {
+    // récupération des transactions dans le local storage via la clé "transactions"
+    retrieveTransactionsFromLocalStorage({ commit }) {
+      const transactions = JSON.parse(
+        // conversion de la valeur en array JS
+        localStorage.getItem("transactions") || "[]"
+      );
+      commit("setTransactions", transactions); // commit des transactions récupérées
+    },
+  },
   modules: {},
 });
 
-transactions.forEach((transaction) => {
-  store.commit("addTransaction", transaction);
-});
+// Appelle l'action pour récupérer les transactions stockées dans le local storage
+store.dispatch("retrieveTransactionsFromLocalStorage");
 
 export default store;
