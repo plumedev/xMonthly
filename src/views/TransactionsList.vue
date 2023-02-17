@@ -11,6 +11,9 @@
         <div class="label">{{ transaction.label }}</div>
         <div class="date">{{ transaction.formattedDate }}</div>
         <div class="amount">{{ transaction.amount }}€</div>
+        <div class="deleteTransaction">
+          <button @click="deleteTransaction(transaction.label)">Delete</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -20,8 +23,9 @@
 <script lang="ts">
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
-import moment from "moment";
 import createTransaction from "@/components/createTransaction.vue";
+import store from "@/store/index";
+
 export default {
   components: {
     createTransaction,
@@ -29,6 +33,17 @@ export default {
   computed: {
     ...mapState(["transactions"]),
     ...mapGetters(["formattedTransactions"]),
+  },
+  methods: {
+    deleteTransaction(label: string): void {
+      store.commit("deleteTransaction", label);
+      this.saveTransactionsToLocalstorage();
+    },
+    saveTransactionsToLocalstorage() {
+      const transactions = store.state.transactions;
+      localStorage.setItem("transactions", JSON.stringify(transactions));
+      return transactions;
+    },
   },
 };
 </script>
