@@ -9,6 +9,7 @@
 </template>
 
 <style lang="scss">
+@import "@/scss/Variables.scss";
 @import "@/scss/Layout.scss";
 @import "@/scss/Atoms.scss";
 @import "@/scss/Molecules.scss";
