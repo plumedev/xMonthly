@@ -1,5 +1,8 @@
 import { createStore } from "vuex";
 import moment from "moment";
+import "moment/locale/fr";
+
+moment.locale("fr");
 
 export interface Transaction {
   label: string;

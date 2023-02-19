@@ -2,30 +2,42 @@
   <div>
     <h2>Nouvelle transaction</h2>
     <form id="createTransaction" @submit.prevent="handleSubmit">
-      <div>
+      <div class="input-group">
         <label>
-          Nom:
-          <input type="text" v-model="transaction.label" />
-          <span v-if="!transaction.label && showError" class="error"
-            >Veuillez entrer un nom de transaction</span
-          >
+          <font-awesome-icon :icon="['fa', 'tag']" class="input-icon" />
         </label>
-        <label>
-          Date:
-          <input type="date" v-model="transaction.date" />
-          <span v-if="!transaction.date && showError" class="error"
-            >Veuillez entrer une date</span
-          >
-        </label>
-        <label>
-          Montant:
-          <input type="number" v-model="transaction.amount" />
-          <span v-if="!transaction.amount && showError" class="error"
-            >Veuillez entrer un montant</span
-          >
-        </label>
+        <input type="text" placeholder="Label" v-model="transaction.label" />
+        <span v-if="!transaction.label && showError" class="error"
+          >Veuillez entrer un nom de dépense</span
+        >
       </div>
-      <button type="submit">Ajouter</button>
+      <div class="input-group">
+        <label>
+          <font-awesome-icon :icon="['fa', 'calendar']" class="input-icon" />
+        </label>
+        <input type="date" placeholder="Date" v-model="transaction.date" />
+        <span v-if="!transaction.date && showError" class="error"
+          >Veuillez entrer une date</span
+        >
+      </div>
+      <div class="input-group">
+        <label>
+          <font-awesome-icon :icon="['fa', 'euro-sign']" class="input-icon" />
+        </label>
+        <input
+          type="number"
+          step="any"
+          placeholder="Montant"
+          v-model="transaction.amount"
+        />
+        <span v-if="!transaction.amount && showError" class="error"
+          >Veuillez entrer un montant</span
+        >
+      </div>
+      <button class="btn green icon text" type="submit">
+        <font-awesome-icon :icon="['fa', 'plus']" />
+        Ajouter
+      </button>
     </form>
   </div>
 </template>
@@ -33,10 +45,19 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import store, { Transaction } from "@/store/index";
-import { useStore } from "vuex";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTag } from "@fortawesome/free-solid-svg-icons";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
+library.add(faPlus, faTag, faCalendar, faEuroSign);
 
 export default defineComponent({
   name: "createTransaction",
+  components: {
+    FontAwesomeIcon,
+  },
   data() {
     return {
       showError: false,

@@ -1,6 +1,37 @@
-form#createTransaction {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.table {
+    .table-head {
+        display: grid;
+        grid-template-columns: 50% 10% 30% 10%;
+        h5:nth-child(3) {
+            text-align: end;
+        } 
+    }
+    .table-content {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        li {
+            display: grid;
+            grid-template-columns: 50% 10% 30% 10%;
+            list-style: none;
+            height: 38px;
+            padding-top: 15px;
+            border-bottom: 1px #F3F3F3 solid;
+            font-size: 1.125rem;
+            .label {
+                font-weight: 500;
+            }
+            .date {
+                color: #72727D;
+            }
+            .amount {
+                font-weight: 900;
+                text-align: end;
+            }
+            .remove-transaction {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+    }
 }

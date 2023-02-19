@@ -1,40 +1,37 @@
-#transactions-list {
-    margin-top: 25px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    padding: 15px;
-    border-radius: 6px;
-    width: 100%;
-    .column-label {
-        display: grid;
-        grid-template-columns: 30% 30% 30%;
-        h3:last-of-type {
-            text-align: end;
-        }
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
+.remove {
+    border: unset;
+    background: unset;
+    font-size: 1.250rem;
+    display: flex;
+    transition: all 3s ease-in-out;
+    padding: 0;
+    width: 18px;
+    .fa-square-minus {
+        position: absolute;
+        transition: all 0.125s ease-in-out;
     }
-    ul {
-        padding: 0;
+    .fa-square-minus[data-prefix="far"] {
         display: flex;
-        flex-direction: column;
-        li {
-            display: grid;
-            grid-template-columns: 30% 30% 30%;
-            list-style: none;
-            height: 38px;
-            padding-top: 15px;
-            border-bottom: 1px #F3F3F3 solid;
-            font-size: 1.125rem;
-            .label {
-                font-weight: 500;
-            }
-            .date {
-                color: #72727D;
-            }
-            .amount {
-                font-weight: 900;
-                text-align: end;
-            }
+        opacity: 1;
+    }
+    .fa-square-minus[data-prefix="fas"] {
+        display: flex;
+        opacity: 0;
+    }
+    &:hover {
+        cursor: pointer;
+        .fa-square-minus[data-prefix="far"] {
+            opacity: 0; 
         }
-
+        .fa-square-minus[data-prefix="fas"] {
+            display: flex;
+            opacity: 1;
+        }
     }
 }
