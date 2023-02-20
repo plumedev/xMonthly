@@ -9,9 +9,9 @@
     background: unset;
     font-size: 1.250rem;
     display: flex;
-    transition: all 3s ease-in-out;
     padding: 0;
     width: 18px;
+    height: 18px;
     .fa-square-minus {
         position: absolute;
         transition: all 0.125s ease-in-out;
@@ -26,6 +26,8 @@
     }
     &:hover {
         cursor: pointer;
+        background: unset;
+        color: $black;
         .fa-square-minus[data-prefix="far"] {
             opacity: 0; 
         }

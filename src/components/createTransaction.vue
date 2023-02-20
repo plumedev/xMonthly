@@ -1,6 +1,8 @@
 <template>
+  <div class="heading">
+    <h2>Mes dépenses récurrentes</h2>
+  </div>
   <div>
-    <h2>Nouvelle transaction</h2>
     <form id="createTransaction" @submit.prevent="handleSubmit">
       <div class="input-group">
         <label>

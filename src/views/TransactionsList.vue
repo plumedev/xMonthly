@@ -1,10 +1,6 @@
 <template>
-  <div class="heading">
-    <h2>Mes dépenses récurrentes</h2>
-    <div class="btn square icon">
-      <font-awesome-icon :icon="['fa', 'plus']" />
-    </div>
-  </div>
+  <TransactionsOverview />
+  <createTransaction />
   <div id="transactions-list" class="box">
     <div class="table">
       <aside class="table-head">
@@ -37,19 +33,19 @@
       </ul>
     </div>
   </div>
-  <createTransaction />
 </template>
 
 <script lang="ts">
+import store from "@/store/index";
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
-import createTransaction from "@/components/createTransaction.vue";
-import store from "@/store/index";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faSquareMinus as fasSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { faSquareMinus as farSquareMinus } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import createTransaction from "@/components/createTransaction.vue";
+import TransactionsOverview from "@/components/TransactionsOverview.vue";
 
 library.add(fasSquareMinus, farSquareMinus, faPlus);
 
@@ -62,6 +58,7 @@ export default {
   components: {
     createTransaction,
     FontAwesomeIcon,
+    TransactionsOverview,
   },
   computed: {
     ...mapState(["transactions"]),
@@ -81,6 +78,7 @@ export default {
 };
 </script>
 <style lang="scss">
+@import "@/scss/Variables.scss";
 @import "@/scss/createTransaction.scss";
 @import "@/scss/TransactionList.scss";
 </style>

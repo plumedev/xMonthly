@@ -13,6 +13,7 @@ export interface Transaction {
 const store = createStore({
   state: {
     transactions: [] as Transaction[],
+    monthlyExpenses: 0,
   },
   getters: {
     formattedTransactions(state) {
@@ -22,6 +23,14 @@ const store = createStore({
           formattedDate: moment(transaction.date).format("DD MMM"),
         };
       });
+    },
+    totalExpenses(state) {
+      // reduce sur le [] transactions du store
+      return state.transactions.reduce(
+        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+        (total, transaction) => total + transaction.amount,
+        0
+      );
     },
   },
   mutations: {
