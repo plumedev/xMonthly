@@ -10,9 +10,15 @@ export interface Transaction {
   amount: number;
 }
 
+export interface Revenue {
+  label: string;
+  amount: number;
+}
+
 const store = createStore({
   state: {
     transactions: [] as Transaction[],
+    revenues: [] as Revenue[],
     monthlyExpenses: 0,
   },
   getters: {
@@ -50,6 +56,9 @@ const store = createStore({
       state.transactions = state.transactions.filter(
         (transaction) => transaction.label !== label
       );
+    },
+    addRevenue(state, revenue: Revenue) {
+      state.revenues.push(revenue);
     },
   },
   actions: {
