@@ -1,12 +1,22 @@
-.stat-bar {
-    height: 25px;
-    width: 500px;
-    background-color: $grey;
-    transition: 0.6s all ease-in-out;
-    .stat-value {
-        background-color: $green;
-        height: 100%;
-        min-width: 1px;
+.stat-group {
+        width: 500px;
+    .stat-bar {
+        height: 25px;
+        background-color: $grey;
         transition: 0.6s all ease-in-out;
+        .stat-value {
+            background-color: $green;
+            height: 100%;
+            min-width: 1px;
+            transition: 0.6s all ease-in-out;
+        }
+    }
+    .stat-details {
+        display: flex;
+        justify-content: space-between;
+        color: $green;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 4px;
     }
 }

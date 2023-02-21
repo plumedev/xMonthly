@@ -5,8 +5,17 @@
   <div class="box">
     <h4>{{ currentMonth }}</h4>
     <p>Revenus: <b>1850€</b></p>
-    <div class="stat-bar">
-      <div class="stat-value" :style="{ width: `${monthlyExpenses}px` }"></div>
+    <div class="stat-group">
+      <div class="stat-bar">
+        <div
+          class="stat-value"
+          :style="{ width: `${monthlyExpenses}px` }"
+        ></div>
+      </div>
+      <div class="stat-details">
+        <span class="value">{{ monthlyExpenses }}€ de dépenses fixes</span>
+        <span class="percentage">{{ monthlyExpenses }}€</span>
+      </div>
     </div>
   </div>
 </template>
