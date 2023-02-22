@@ -38,6 +38,13 @@ const store = createStore({
         0
       );
     },
+    getRevenues(state) {
+      return state.revenues.map((revenue) => {
+        return {
+          ...revenue,
+        };
+      });
+    },
   },
   mutations: {
     // Methods about Transactions
@@ -64,6 +71,11 @@ const store = createStore({
     },
     setRevenues(state, revenue: Revenue[]) {
       state.revenues = revenue;
+    },
+    deleteRevenue(state, label: string) {
+      state.revenues = state.revenues.filter(
+        (revenue) => revenue.label !== label
+      );
     },
   },
   actions: {
