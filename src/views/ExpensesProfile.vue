@@ -2,16 +2,19 @@
   <div class="expenses-profile">
     <h1>Mon profil</h1>
     <SetRevenues />
+    <ListRevenues />
   </div>
 </template>
 
 <script lang="ts">
 import SetRevenues from "@/components/SetRevenues.vue";
+import ListRevenues from "@/components/ListRevenues.vue";
 
 export default {
   name: "ExpensesProfile",
   components: {
     SetRevenues,
+    ListRevenues,
   },
 };
 </script>

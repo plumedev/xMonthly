@@ -12,14 +12,20 @@
           placeholder="Nom de la source de revenu"
           v-model="revenue.label"
         />
+        <span v-if="!revenue.label && showError" class="error"
+          >Veuillez entrer un nom</span
+        >
       </div>
       <div class="input-group">
         <label>
           <font-awesome-icon :icon="['fa', 'euro-sign']" class="input-icon" />
         </label>
         <input type="text" placeholder="Montant" v-model="revenue.amount" />
+        <span v-if="!revenue.amount && showError" class="error"
+          >Veuillez entrer un montant</span
+        >
       </div>
-      <button class="btn green icon text" type="submit">
+      <button class="btn green inverted icon text" type="submit">
         <font-awesome-icon :icon="['fa', 'plus']" />
         Ajouter
       </button>
@@ -40,6 +46,7 @@ library.add(faPlus, faTag, faEuroSign);
 @Options({
   data() {
     return {
+      showError: false,
       revenue: {
         label: "",
         amount: 0,
@@ -58,20 +65,28 @@ library.add(faPlus, faTag, faEuroSign);
       return revenues;
     },
     addRevenueSubmit(): void {
-      store.commit("addRevenue", this.revenue);
-      this.revenue = {
-        label: "",
-        amount: 0,
-      };
-      this.saveRevenuesToLocalStorage();
+      if (this.revenue.label && this.revenue.amount) {
+        store.commit("addRevenue", this.revenue);
+        this.revenue = {
+          label: "",
+          amount: 0,
+        };
+        this.saveRevenuesToLocalStorage();
+        this.showError = false;
+      } else {
+        this.showError = true;
+      }
     },
   },
 })
 export default class SetRevenues extends Vue {
   addRevenueSubmit: ((payload: Event) => void) | undefined;
   revenue!: { label: string; amount: number };
+  showError!: boolean;
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import "@/scss/SetRevenues.scss";
+</style>

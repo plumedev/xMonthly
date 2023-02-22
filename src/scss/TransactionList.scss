@@ -3,37 +3,3 @@
     justify-content: space-between;
     align-items: center;
 }
-
-.remove {
-    border: unset;
-    background: unset;
-    font-size: 1.250rem;
-    display: flex;
-    padding: 0;
-    width: 18px;
-    height: 18px;
-    .fa-square-minus {
-        position: absolute;
-        transition: all 0.125s ease-in-out;
-    }
-    .fa-square-minus[data-prefix="far"] {
-        display: flex;
-        opacity: 1;
-    }
-    .fa-square-minus[data-prefix="fas"] {
-        display: flex;
-        opacity: 0;
-    }
-    &:hover {
-        cursor: pointer;
-        background: unset;
-        color: $black;
-        .fa-square-minus[data-prefix="far"] {
-            opacity: 0; 
-        }
-        .fa-square-minus[data-prefix="fas"] {
-            display: flex;
-            opacity: 1;
-        }
-    }
-}
