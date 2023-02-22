@@ -40,6 +40,7 @@ const store = createStore({
     },
   },
   mutations: {
+    // Methods about Transactions
     setTransactions(state, transactions: Transaction[]) {
       state.transactions = transactions;
     },
@@ -57,8 +58,12 @@ const store = createStore({
         (transaction) => transaction.label !== label
       );
     },
+    // Methods about Revenues
     addRevenue(state, revenue: Revenue) {
       state.revenues.push(revenue);
+    },
+    setRevenues(state, revenue: Revenue[]) {
+      state.revenues = revenue;
     },
   },
   actions: {
@@ -70,11 +75,20 @@ const store = createStore({
       );
       commit("setTransactions", transactions); // commit des transactions récupérées
     },
+    // récupération des transactions dans le local storage via la clé "transactions"
+    retrieveRevenuesFromLocalStorage({ commit }) {
+      const revenues = JSON.parse(
+        // conversion de la valeur en array JS
+        localStorage.getItem("revenues") || "[]"
+      );
+      commit("setRevenues", revenues); // commit des Revenues récupérés
+    },
   },
   modules: {},
 });
 
 // Appelle l'action pour récupérer les transactions stockées dans le local storage
 store.dispatch("retrieveTransactionsFromLocalStorage");
-
+// Appelle l'action pour récupérer les Revenues stockés dans le local storage
+store.dispatch("retrieveRevenuesFromLocalStorage");
 export default store;
