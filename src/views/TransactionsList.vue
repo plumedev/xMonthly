@@ -21,7 +21,7 @@
             <button
               class="remove"
               :class="{ hover: hover }"
-              @click="deleteTransaction(transaction.label)"
+              @click="deleteTransaction(transaction.id)"
               @mouseover="hover = true"
               @mouseleave="hover = false"
             >
@@ -65,8 +65,8 @@ export default {
     ...mapGetters(["formattedTransactions"]),
   },
   methods: {
-    deleteTransaction(label: string): void {
-      store.commit("deleteTransaction", label);
+    deleteTransaction(id: string): void {
+      store.commit("deleteTransaction", id);
       this.saveTransactionsToLocalstorage();
     },
     saveTransactionsToLocalstorage() {

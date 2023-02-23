@@ -8,6 +8,7 @@ export interface Transaction {
   label: string;
   date: Date;
   amount: number;
+  id: string;
 }
 
 export interface Revenue {
@@ -60,9 +61,9 @@ const store = createStore({
       );
       state.transactions[index] = updatedTransaction;
     },
-    deleteTransaction(state, label: string) {
+    deleteTransaction(state, id: string) {
       state.transactions = state.transactions.filter(
-        (transaction) => transaction.label !== label
+        (transaction) => transaction.id !== id
       );
     },
     // Methods about Revenues
@@ -94,6 +95,12 @@ const store = createStore({
         localStorage.getItem("revenues") || "[]"
       );
       commit("setRevenues", revenues); // commit des Revenues récupérés
+    },
+    // Génère un ID
+    generateUniqueId(): string {
+      const timestamp = Date.now();
+      const random = Math.floor(Math.random() * 1000);
+      return `${timestamp}-${random}`;
     },
   },
   modules: {},
