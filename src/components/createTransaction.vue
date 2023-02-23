@@ -46,6 +46,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import store, { Transaction } from "@/store/index";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -67,6 +68,7 @@ export default defineComponent({
         label: "",
         date: "",
         amount: 0,
+        id: "",
       },
     };
   },
@@ -78,18 +80,21 @@ export default defineComponent({
     },
   },
   methods: {
-    handleSubmit(): void {
+    ...mapActions(["generateUniqueId"]),
+    async handleSubmit(): Promise<void> {
       if (
         this.transaction.label &&
         this.transaction.date &&
         this.transaction.amount
       ) {
+        this.transaction.id = await this.generateUniqueId();
         store.commit("addTransaction", this.transaction);
         this.saveTransactionsToLocalstorage;
         this.transaction = {
           label: "",
           date: "",
           amount: 0,
+          id: "",
         };
         this.showError = false;
       } else {
