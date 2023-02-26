@@ -40,6 +40,14 @@ const store = createStore({
         0
       );
     },
+    totalRevenues(state) {
+      // reduce sur le [] revenues du store
+      return state.revenues.reduce(
+        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+        (total, revenue) => total + revenue.amount,
+        0
+      );
+    },
     getRevenues(state) {
       return state.revenues.map((revenue) => {
         return {
@@ -74,10 +82,8 @@ const store = createStore({
     setRevenues(state, revenue: Revenue[]) {
       state.revenues = revenue;
     },
-    deleteRevenue(state, label: string) {
-      state.revenues = state.revenues.filter(
-        (revenue) => revenue.label !== label
-      );
+    deleteRevenue(state, id: string) {
+      state.revenues = state.revenues.filter((revenue) => revenue.id !== id);
     },
   },
   actions: {
