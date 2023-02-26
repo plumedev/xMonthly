@@ -36,6 +36,7 @@
 <script lang="ts">
 import store, { Revenue } from "@/store/index";
 import { Options, Vue } from "vue-class-component";
+import { mapActions } from "vuex";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -50,6 +51,7 @@ library.add(faPlus, faTag, faEuroSign);
       revenue: {
         label: "",
         amount: 0,
+        id: "",
       },
     };
   },
@@ -59,17 +61,20 @@ library.add(faPlus, faTag, faEuroSign);
   computed: {},
   props: {},
   methods: {
+    ...mapActions(["generateUniqueId"]),
     saveRevenuesToLocalStorage(): Revenue[] {
       const revenues = store.state.revenues;
       localStorage.setItem("revenues", JSON.stringify(revenues));
       return revenues;
     },
-    addRevenueSubmit(): void {
+    async addRevenueSubmit(): Promise<void> {
       if (this.revenue.label && this.revenue.amount) {
+        this.revenue.id = await this.generateUniqueId();
         store.commit("addRevenue", this.revenue);
         this.revenue = {
           label: "",
           amount: 0,
+          id: "",
         };
         this.saveRevenuesToLocalStorage();
         this.showError = false;
