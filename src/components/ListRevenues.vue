@@ -13,15 +13,15 @@
             <div class="label">{{ revenue.label }}</div>
             <div class="amount">{{ revenue.amount }}€</div>
             <div class="remove-revenue">
-              <button class="remove" @click="deleteRevenue(revenue.label)">
+              <button class="remove" @click="deleteRevenue(revenue.id)">
                 <font-awesome-icon :icon="['far', 'fa-square-minus']" />
                 <font-awesome-icon :icon="['fas', 'square-minus']" />
               </button>
             </div>
           </li>
           <li class="total-revenue">
-            <div>Total des revenus mensuels</div>
-            <div></div>
+            <div class="total-revenue__label">Total des revenus mensuels</div>
+            <div class="total-revenue__total">{{ monthlyRevenues }}€</div>
           </li>
         </ul>
       </div>
@@ -48,10 +48,14 @@ export default {
   },
   computed: {
     ...mapGetters(["getRevenues"]),
+    ...mapGetters(["totalRevenues"]),
+    monthlyRevenues() {
+      return this.totalRevenues;
+    },
   },
   methods: {
-    deleteRevenue(label: string): void {
-      store.commit("deleteRevenue", label);
+    deleteRevenue(id: string): void {
+      store.commit("deleteRevenue", id);
       this.saveRevenuesToLocalStorage();
     },
     saveRevenuesToLocalStorage() {

@@ -20,7 +20,12 @@
         <label>
           <font-awesome-icon :icon="['fa', 'euro-sign']" class="input-icon" />
         </label>
-        <input type="text" placeholder="Montant" v-model="revenue.amount" />
+        <input
+          type="number"
+          step="any"
+          placeholder="Montant"
+          v-model="revenue.amount"
+        />
         <span v-if="!revenue.amount && showError" class="error"
           >Veuillez entrer un montant</span
         >
