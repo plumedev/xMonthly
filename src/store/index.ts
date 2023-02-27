@@ -55,6 +55,11 @@ const store = createStore({
         };
       });
     },
+    expensesPercentage(state, getters) {
+      const totalRevenues = getters.totalRevenues;
+      const totalExpenses = getters.totalExpenses;
+      return (totalExpenses * 100) / totalRevenues;
+    },
   },
   mutations: {
     // Methods about Transactions

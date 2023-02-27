@@ -9,12 +9,12 @@
       <div class="stat-bar">
         <div
           class="stat-value"
-          :style="{ width: `${monthlyExpenses}px` }"
+          :style="{ width: `${monthlyFeesPercentage}%` }"
         ></div>
       </div>
       <div class="stat-details">
         <span class="value">{{ monthlyExpenses }}€ de dépenses fixes</span>
-        <span class="percentage">{{ monthlyExpenses }}€</span>
+        <span class="percentage">{{ monthlyRevenues }}€</span>
       </div>
     </div>
   </div>
@@ -36,10 +36,16 @@ export default {
   },
   computed: {
     // La méthode mapGetters retourne un objet qui peut être étendu directement dans la section computed du composant en utilisant l'opérateur spread .... Cela signifie que les propriétés de l'objet retourné par mapGetters sont ajoutées directement dans l'objet computed du composant, en leur donnant le même nom que leur nom d'origine dans le store.
-    ...mapGetters(["totalExpenses"]),
+    ...mapGetters(["totalExpenses", "totalRevenues", "expensesPercentage"]),
     // Fonction monthlyExpenses() qui récupère totalExpenses mappé juste avant
     monthlyExpenses() {
       return this.totalExpenses;
+    },
+    monthlyRevenues() {
+      return this.totalRevenues;
+    },
+    monthlyFeesPercentage() {
+      return this.expensesPercentage;
     },
   },
 };
