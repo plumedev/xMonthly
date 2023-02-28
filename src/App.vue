@@ -1,12 +1,13 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/transactions-list">Transaction List</router-link> |
-    <router-link to="/profile">Mon profil</router-link>
-  </nav>
-  <main>
-    <router-view />
-  </main>
+  <div>
+    <nav>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/profile">Mon profil</router-link>
+    </nav>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <style lang="scss">
