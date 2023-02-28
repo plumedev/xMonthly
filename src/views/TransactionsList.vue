@@ -1,36 +1,41 @@
 <template>
-  <TransactionsOverview />
-  <createTransaction />
-  <div id="transactions-list" class="box">
-    <div class="table">
-      <aside class="table-head">
-        <h5>Label</h5>
-        <h5>Date</h5>
-        <h5>Montant</h5>
-        <h5></h5>
-      </aside>
-      <ul class="table-content">
-        <li
-          v-for="transaction in formattedTransactions"
-          :key="transaction.label"
-        >
-          <div class="label">{{ transaction.label }}</div>
-          <div class="date">{{ transaction.formattedDate }}</div>
-          <div class="amount">{{ transaction.amount }}€</div>
-          <div class="remove-transaction">
-            <button
-              class="remove"
-              :class="{ hover: hover }"
-              @click="deleteTransaction(transaction.id)"
-              @mouseover="hover = true"
-              @mouseleave="hover = false"
-            >
-              <font-awesome-icon :icon="['far', 'fa-square-minus']" />
-              <font-awesome-icon :icon="['fas', 'square-minus']" />
-            </button>
-          </div>
-        </li>
-      </ul>
+  <div>
+    <div class="heading">
+      <h2>Mon budget</h2>
+    </div>
+    <TransactionsOverview />
+    <createTransaction />
+    <div id="transactions-list" class="box">
+      <div class="table">
+        <aside class="table-head">
+          <h5>Label</h5>
+          <h5>Date</h5>
+          <h5>Montant</h5>
+          <h5></h5>
+        </aside>
+        <ul class="table-content">
+          <li
+            v-for="transaction in formattedTransactions"
+            :key="transaction.label"
+          >
+            <div class="label">{{ transaction.label }}</div>
+            <div class="date">{{ transaction.formattedDate }}</div>
+            <div class="amount">{{ transaction.amount }}€</div>
+            <div class="remove-transaction">
+              <button
+                class="remove"
+                :class="{ hover: hover }"
+                @click="deleteTransaction(transaction.id)"
+                @mouseover="hover = true"
+                @mouseleave="hover = false"
+              >
+                <font-awesome-icon :icon="['far', 'fa-square-minus']" />
+                <font-awesome-icon :icon="['fas', 'square-minus']" />
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
