@@ -34,18 +34,22 @@ const store = createStore({
     },
     totalExpenses(state) {
       // reduce sur le [] transactions du store
-      return state.transactions.reduce(
-        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
-        (total, transaction) => total + transaction.amount,
-        0
+      return Math.round(
+        state.transactions.reduce(
+          // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+          (total, transaction) => total + transaction.amount,
+          0
+        )
       );
     },
     totalRevenues(state) {
       // reduce sur le [] revenues du store
-      return state.revenues.reduce(
-        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
-        (total, revenue) => total + revenue.amount,
-        0
+      return Math.round(
+        state.revenues.reduce(
+          // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+          (total, revenue) => total + revenue.amount,
+          0
+        )
       );
     },
     getRevenues(state) {
@@ -58,7 +62,7 @@ const store = createStore({
     expensesPercentage(state, getters) {
       const totalRevenues = getters.totalRevenues;
       const totalExpenses = getters.totalExpenses;
-      return (totalExpenses * 100) / totalRevenues;
+      return Math.round((totalExpenses * 100) / totalRevenues);
     },
   },
   mutations: {

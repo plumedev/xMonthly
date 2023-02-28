@@ -1,7 +1,4 @@
 <template>
-  <div class="heading">
-    <h2>Mon budget</h2>
-  </div>
   <div class="box">
     <h4>{{ currentMonth }}</h4>
     <p>Revenus: <b>1850€</b></p>
@@ -13,7 +10,11 @@
         ></div>
       </div>
       <div class="stat-details">
-        <span class="value">{{ monthlyExpenses }}€ de dépenses fixes</span>
+        <span class="value"
+          >{{ monthlyExpenses }}€ de dépenses fixes ({{
+            monthlyFeesPercentage
+          }}%)</span
+        >
         <span class="percentage">{{ monthlyRevenues }}€</span>
       </div>
     </div>
