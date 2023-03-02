@@ -51,7 +51,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/scss/Variables.scss";
 @import "@/scss/createTransaction.scss";
 @import "@/scss/TransactionList.scss";

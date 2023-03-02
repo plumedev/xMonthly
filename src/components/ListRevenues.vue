@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import "@/scss/Variables.scss";
 @import "@/scss/Atoms.scss";
 @import "@/scss/ListRevenues.scss";

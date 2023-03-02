@@ -9,7 +9,19 @@
       <div class="table">
         <aside class="table-head">
           <h5>Label</h5>
-          <h5>Date</h5>
+          <h5 @click="sortTransactionByDate()">
+            Date
+            <font-awesome-icon
+              v-show="sortBy"
+              :icon="['fas', 'arrow-up-wide-short']"
+              class="cursor"
+            />
+            <font-awesome-icon
+              v-show="!sortBy"
+              :icon="['fas', 'arrow-up-short-wide']"
+              class="cursor"
+            />
+          </h5>
           <h5>Montant</h5>
           <h5></h5>
         </aside>
@@ -41,23 +53,25 @@
 </template>
 
 <script lang="ts">
-import store from "@/store/index";
+import store, { Transaction } from "@/store/index";
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faSquareMinus as fasSquareMinus } from "@fortawesome/free-solid-svg-icons";
-import { faSquareMinus as farSquareMinus } from "@fortawesome/free-regular-svg-icons";
+import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpShortWide } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import createTransaction from "@/components/createTransaction.vue";
 import TransactionsOverview from "@/components/TransactionsOverview.vue";
+import { defineComponent } from "vue";
 
-library.add(fasSquareMinus, farSquareMinus, faPlus);
+library.add(faPlus, faArrowUpWideShort, faArrowUpShortWide);
 
-export default {
+export default defineComponent({
   data() {
     return {
       hover: false,
+      sortBy: false,
     };
   },
   components: {
@@ -79,8 +93,21 @@ export default {
       localStorage.setItem("transactions", JSON.stringify(transactions));
       return transactions;
     },
+    sortTransactionByDate() {
+      this.sortBy = !this.sortBy;
+      const transactions = store.state.transactions;
+      transactions.sort((a: Transaction, b: Transaction) => {
+        const dateA = new Date(a.date).getTime();
+        const dateB = new Date(b.date).getTime();
+        if (this.sortBy) {
+          return dateB - dateA;
+        } else {
+          return dateA - dateB;
+        }
+      });
+    },
   },
-};
+});
 </script>
 <style lang="scss">
 @import "@/scss/Variables.scss";
