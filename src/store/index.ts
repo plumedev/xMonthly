@@ -32,6 +32,23 @@ const store = createStore({
         };
       });
     },
+    transactionsOfMonth: (state) => {
+      const currentMonth = moment().month();
+      const currentYear = moment().year();
+
+      return state.transactions
+        .filter(
+          (transaction) =>
+            moment(transaction.date).month() === currentMonth &&
+            moment(transaction.date).year() === currentYear
+        )
+        .map((transaction) => {
+          return {
+            ...transaction,
+            formattedDate: moment(transaction.date).format("DD MMM"),
+          };
+        });
+    },
     totalExpenses(state) {
       // reduce sur le [] transactions du store
       return Math.round(

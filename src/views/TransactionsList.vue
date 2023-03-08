@@ -27,7 +27,7 @@
         </aside>
         <ul class="table-content">
           <li
-            v-for="transaction in formattedTransactions"
+            v-for="transaction in transactionsOfMonth"
             :key="transaction.label"
           >
             <div class="label">{{ transaction.label }}</div>
@@ -61,11 +61,19 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 import { faArrowUpShortWide } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faSquareMinus as fasSquareMinus } from "@fortawesome/free-solid-svg-icons";
+import { faSquareMinus as farSquareMinus } from "@fortawesome/free-regular-svg-icons";
 import createTransaction from "@/components/createTransaction.vue";
 import TransactionsOverview from "@/components/TransactionsOverview.vue";
 import { defineComponent } from "vue";
 
-library.add(faPlus, faArrowUpWideShort, faArrowUpShortWide);
+library.add(
+  faPlus,
+  faArrowUpWideShort,
+  faArrowUpShortWide,
+  fasSquareMinus,
+  farSquareMinus
+);
 
 export default defineComponent({
   data() {
@@ -81,7 +89,7 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["transactions"]),
-    ...mapGetters(["formattedTransactions"]),
+    ...mapGetters(["formattedTransactions", "transactionsOfMonth"]),
   },
   methods: {
     deleteTransaction(id: string): void {
