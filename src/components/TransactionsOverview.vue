@@ -22,17 +22,17 @@
 </template>
 
 <script lang="ts">
-import moment from "moment";
-import "moment/locale/fr";
+import dayjs from "dayjs";
+import "dayjs/locale/fr";
 import { mapGetters } from "vuex";
 
-moment.locale("fr");
+dayjs.locale("fr");
 
 export default {
   name: "TransactionsOverview",
   data(): { currentMonth: string } {
     return {
-      currentMonth: moment().format("MMMM YYYY"),
+      currentMonth: dayjs().format("MMMM YYYY"),
     };
   },
   computed: {
