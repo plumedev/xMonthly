@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
-import moment from "moment";
-import "moment/locale/fr";
+import dayjs from "dayjs";
+import "dayjs/locale/fr";
 
-moment.locale("fr");
+dayjs.locale("fr");
 
 export interface Transaction {
   label: string;
@@ -28,9 +28,26 @@ const store = createStore({
       return state.transactions.map((transaction) => {
         return {
           ...transaction,
-          formattedDate: moment(transaction.date).format("DD MMM"),
+          formattedDate: dayjs(transaction.date).format("DD MMM"),
         };
       });
+    },
+    transactionsOfMonth: (state) => {
+      const currentMonth = dayjs().month();
+      const currentYear = dayjs().year();
+
+      return state.transactions
+        .filter(
+          (transaction) =>
+            dayjs(transaction.date).month() === currentMonth &&
+            dayjs(transaction.date).year() === currentYear
+        )
+        .map((transaction) => {
+          return {
+            ...transaction,
+            formattedDate: dayjs(transaction.date).format("DD MMM"),
+          };
+        });
     },
     totalExpenses(state) {
       // reduce sur le [] transactions du store
