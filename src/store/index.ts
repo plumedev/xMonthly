@@ -15,6 +15,7 @@ export interface Revenue {
   label: string;
   amount: number;
   id: string;
+  date: Date;
 }
 
 const store = createStore({

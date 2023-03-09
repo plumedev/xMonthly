@@ -47,6 +47,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
 library.add(faPlus, faTag, faEuroSign);
 
 @Options({
@@ -75,11 +76,13 @@ library.add(faPlus, faTag, faEuroSign);
     async addRevenueSubmit(): Promise<void> {
       if (this.revenue.label && this.revenue.amount) {
         this.revenue.id = await this.generateUniqueId();
+        this.revenue.date = dayjs().format("DD MMM");
         store.commit("addRevenue", this.revenue);
         this.revenue = {
           label: "",
           amount: 0,
           id: "",
+          date: dayjs().format("DD MMM"),
         };
         this.saveRevenuesToLocalStorage();
         this.showError = false;
