@@ -50,9 +50,18 @@ const store = createStore({
         });
     },
     totalExpenses(state) {
-      // reduce sur le [] transactions du store
+      const currentMonth = dayjs().month();
+      const currentYear = dayjs().year();
+
+      // reduce sur le [] transactions du store où l'on filtre pour le mois en cours
+      const monthlyExpenses = state.transactions.filter(
+        (transaction) =>
+          dayjs(transaction.date).month() === currentMonth &&
+          dayjs(transaction.date).year() === currentYear
+      );
+
       return Math.round(
-        state.transactions.reduce(
+        monthlyExpenses.reduce(
           // (total (variable déclarée), transacton (key) ==> logique à appliquer)
           (total, transaction) => total + transaction.amount,
           0
