@@ -22,6 +22,7 @@ const store = createStore({
     transactions: [] as Transaction[],
     revenues: [] as Revenue[],
     monthlyExpenses: 0,
+    activeMonth: dayjs(),
   },
   getters: {
     formattedTransactions(state) {
