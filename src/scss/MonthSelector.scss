@@ -1,0 +1,11 @@
+.activeMonth {
+    text-transform: capitalize;
+    min-width: 200px;
+    text-align: center;
+}
+
+.monthSelector {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+}

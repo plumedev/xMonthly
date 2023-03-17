@@ -22,6 +22,7 @@ const store = createStore({
     transactions: [] as Transaction[],
     revenues: [] as Revenue[],
     monthlyExpenses: 0,
+    activeMonth: dayjs(),
   },
   getters: {
     formattedTransactions(state) {
@@ -33,8 +34,8 @@ const store = createStore({
       });
     },
     transactionsOfMonth: (state) => {
-      const currentMonth = dayjs().month();
-      const currentYear = dayjs().year();
+      const currentMonth = state.activeMonth.month();
+      const currentYear = state.activeMonth.year();
 
       return state.transactions
         .filter(
@@ -90,6 +91,9 @@ const store = createStore({
       const totalExpenses = getters.totalExpenses;
       return Math.round((totalExpenses * 100) / totalRevenues);
     },
+    getActiveMonth(state) {
+      return state.activeMonth;
+    },
   },
   mutations: {
     // Methods about Transactions
@@ -119,6 +123,9 @@ const store = createStore({
     },
     deleteRevenue(state, id: string) {
       state.revenues = state.revenues.filter((revenue) => revenue.id !== id);
+    },
+    setActiveMonth(state, newMonth) {
+      state.activeMonth = newMonth;
     },
   },
   actions: {
