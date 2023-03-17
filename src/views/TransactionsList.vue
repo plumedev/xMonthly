@@ -89,7 +89,11 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["transactions"]),
-    ...mapGetters(["formattedTransactions", "transactionsOfMonth"]),
+    ...mapGetters([
+      "formattedTransactions",
+      "transactionsOfMonth",
+      "getActiveMonth",
+    ]),
   },
   methods: {
     deleteTransaction(id: string): void {
@@ -113,6 +117,10 @@ export default defineComponent({
           return dateA - dateB;
         }
       });
+    },
+    displayActiveMonth() {
+      const activeMonth = store.state.activeMonth;
+      return activeMonth;
     },
   },
 });

@@ -1,7 +1,9 @@
 <template>
   <div class="box">
-    <h4>{{ currentMonth }}</h4>
-    <p>Revenus: <b>1850€</b></p>
+    <MonthSelector />
+    <p>
+      Revenus: <b>{{ monthlyRevenues }}€</b>
+    </p>
     <div class="stat-group">
       <div class="stat-bar">
         <div
@@ -25,11 +27,15 @@
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
 import { mapGetters } from "vuex";
+import MonthSelector from "./MonthSelector.vue";
 
 dayjs.locale("fr");
 
 export default {
   name: "TransactionsOverview",
+  components: {
+    MonthSelector,
+  },
   data(): { currentMonth: string } {
     return {
       currentMonth: dayjs().format("MMMM YYYY"),

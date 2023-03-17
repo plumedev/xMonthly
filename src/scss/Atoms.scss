@@ -175,4 +175,12 @@ input {
             }
         }
     }
+    &.icon-only {
+        border: none;
+        &:hover {
+            background-color: unset;
+            color: $green;
+            
+        }
+    }
 }
