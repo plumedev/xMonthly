@@ -9,7 +9,7 @@
           <h5></h5>
         </aside>
         <ul class="table-content">
-          <li v-for="revenue in getRevenues" :key="revenue.label">
+          <li v-for="revenue in revenueOfMonth" :key="revenue.label">
             <div class="label">{{ revenue.label }}</div>
             <div class="amount">{{ revenue.amount }}€</div>
             <div class="remove-revenue">
@@ -47,10 +47,14 @@ export default {
     FontAwesomeIcon,
   },
   computed: {
-    ...mapGetters(["getRevenues"]),
-    ...mapGetters(["totalRevenues"]),
+    ...mapGetters([
+      "getRevenues",
+      "totalRevenues",
+      "revenueOfMonth",
+      "totalMonthlyRevenues",
+    ]),
     monthlyRevenues() {
-      return this.totalRevenues;
+      return this.totalMonthlyRevenues;
     },
   },
   methods: {

@@ -43,13 +43,19 @@ export default {
   },
   computed: {
     // La méthode mapGetters retourne un objet qui peut être étendu directement dans la section computed du composant en utilisant l'opérateur spread .... Cela signifie que les propriétés de l'objet retourné par mapGetters sont ajoutées directement dans l'objet computed du composant, en leur donnant le même nom que leur nom d'origine dans le store.
-    ...mapGetters(["totalExpenses", "totalRevenues", "expensesPercentage"]),
+    ...mapGetters([
+      "totalExpenses",
+      "totalRevenues",
+      "expensesPercentage",
+      "totalMonthlyRevenues",
+      "totalMonthlyExpenses",
+    ]),
     // Fonction monthlyExpenses() qui récupère totalExpenses mappé juste avant
     monthlyExpenses() {
-      return this.totalExpenses;
+      return this.totalMonthlyExpenses;
     },
     monthlyRevenues() {
-      return this.totalRevenues;
+      return this.totalMonthlyRevenues;
     },
     monthlyFeesPercentage() {
       return this.expensesPercentage;

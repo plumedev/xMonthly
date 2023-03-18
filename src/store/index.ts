@@ -51,6 +51,21 @@ const store = createStore({
           };
         });
     },
+    revenueOfMonth: (state) => {
+      const currentMonth = state.activeMonth.month();
+      const currentYear = state.activeMonth.year();
+      return state.revenues
+        .filter(
+          (revenue) =>
+            dayjs(revenue.date).month() === currentMonth &&
+            dayjs(revenue.date).year() === currentYear
+        )
+        .map((revenue) => {
+          return {
+            ...revenue,
+          };
+        });
+    },
     totalExpenses(state) {
       const currentMonth = dayjs().month();
       const currentYear = dayjs().year();
@@ -88,12 +103,30 @@ const store = createStore({
       });
     },
     expensesPercentage(state, getters) {
-      const totalRevenues = getters.totalRevenues;
-      const totalExpenses = getters.totalExpenses;
+      const totalRevenues = getters.totalMonthlyRevenues;
+      const totalExpenses = getters.totalMonthlyExpenses;
       return Math.round((totalExpenses * 100) / totalRevenues);
     },
     getActiveMonth(state) {
       return state.activeMonth;
+    },
+    totalMonthlyRevenues(state, getters) {
+      const totalMonthlyRevenues = getters.revenueOfMonth;
+
+      return totalMonthlyRevenues.reduce(
+        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+        (total: number, revenue: { amount: number }) => total + revenue.amount,
+        0
+      );
+    },
+    totalMonthlyExpenses(state, getters) {
+      const totalMonthlyExpenses = getters.transactionsOfMonth;
+
+      return totalMonthlyExpenses.reduce(
+        // (total (variable déclarée), transacton (key) ==> logique à appliquer)
+        (total: number, revenue: { amount: number }) => total + revenue.amount,
+        0
+      );
     },
   },
   mutations: {

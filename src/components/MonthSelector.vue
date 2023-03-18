@@ -42,12 +42,12 @@ export default defineComponent({
     },
     incrementMonth(): void {
       const newDate = dayjs(this.activeMonth).add(1, "month");
-      // Mettre à jour activeMonth dans le store Vuex
+      // Met à jour activeMonth dans le store Vuex
       store.commit("setActiveMonth", newDate);
     },
     decrementMonth(): void {
       const newDate = dayjs(this.activeMonth).subtract(1, "month");
-      // Mettre à jour activeMonth dans le store Vuex
+      // Met à jour activeMonth dans le store Vuex
       store.commit("setActiveMonth", newDate);
     },
   },
