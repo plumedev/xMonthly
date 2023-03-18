@@ -18,6 +18,15 @@
       </div>
       <div class="input-group">
         <label>
+          <font-awesome-icon :icon="['fa', 'calendar']" class="input-icon" />
+        </label>
+        <input type="date" placeholder="Date" v-model="revenue.date" />
+        <span v-if="!revenue.date && showError" class="error"
+          >Veuillez entrer une date</span
+        >
+      </div>
+      <div class="input-group">
+        <label>
           <font-awesome-icon :icon="['fa', 'euro-sign']" class="input-icon" />
         </label>
         <input
@@ -47,7 +56,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faTag } from "@fortawesome/free-solid-svg-icons";
 import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
-library.add(faPlus, faTag, faEuroSign);
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+library.add(faPlus, faTag, faEuroSign, faCalendar);
 
 @Options({
   data() {
@@ -57,6 +67,7 @@ library.add(faPlus, faTag, faEuroSign);
         label: "",
         amount: 0,
         id: "",
+        date: "",
       },
     };
   },
@@ -73,13 +84,14 @@ library.add(faPlus, faTag, faEuroSign);
       return revenues;
     },
     async addRevenueSubmit(): Promise<void> {
-      if (this.revenue.label && this.revenue.amount) {
+      if (this.revenue.label && this.revenue.amount && this.revenue.date) {
         this.revenue.id = await this.generateUniqueId();
         store.commit("addRevenue", this.revenue);
         this.revenue = {
           label: "",
           amount: 0,
           id: "",
+          date: "",
         };
         this.saveRevenuesToLocalStorage();
         this.showError = false;
@@ -91,7 +103,7 @@ library.add(faPlus, faTag, faEuroSign);
 })
 export default class SetRevenues extends Vue {
   addRevenueSubmit: ((payload: Event) => void) | undefined;
-  revenue!: { label: string; amount: number };
+  revenue!: { date: Date; label: string; amount: number };
   showError!: boolean;
 }
 </script>
