@@ -1,11 +1,11 @@
 <template>
   <div class="monthSelector">
     <button class="icon-only" @click="decrementMonth">
-      <font-awesome-icon :icon="['fas', 'angles-left']" />
+      <font-awesome-icon :icon="['fas', 'arrow-left']" />
     </button>
     <h4 class="activeMonth">{{ displayActiveMonth() }}</h4>
     <button class="icon-only" @click="incrementMonth">
-      <font-awesome-icon :icon="['fas', 'angles-right']" />
+      <font-awesome-icon :icon="['fas', 'arrow-right']" />
     </button>
   </div>
 </template>
@@ -17,10 +17,10 @@ import { mapGetters } from "vuex";
 import store from "@/store/index";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faAngleDoubleLeft, faAngleDoubleRight);
+library.add(faArrowLeft, faArrowRight);
 
 export default defineComponent({
   data() {
@@ -55,5 +55,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/scss/MonthSelector.scss";
+@import "@/scss/components/MonthSelector.scss";
 </style>

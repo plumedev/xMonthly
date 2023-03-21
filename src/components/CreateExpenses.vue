@@ -1,14 +1,18 @@
 <template>
-  <div class="heading">
-    <h2>Mes dépenses récurrentes</h2>
-  </div>
-  <div>
+  <div class="box">
+    <div class="heading">
+      <h2>Ajout d'une dépense</h2>
+    </div>
     <form id="createTransaction" @submit.prevent="handleSubmit">
       <div class="input-group">
         <label>
           <font-awesome-icon :icon="['fa', 'tag']" class="input-icon" />
         </label>
-        <input type="text" placeholder="Label" v-model="transaction.label" />
+        <input
+          type="text"
+          placeholder="Nom de la dépense"
+          v-model="transaction.label"
+        />
         <span v-if="!transaction.label && showError" class="error"
           >Veuillez entrer un nom de dépense</span
         >
@@ -36,7 +40,7 @@
           >Veuillez entrer un montant</span
         >
       </div>
-      <button class="btn green icon text" type="submit">
+      <button class="btn green inverted icon text" type="submit">
         <font-awesome-icon :icon="['fa', 'plus']" />
         Ajouter
       </button>
@@ -57,7 +61,7 @@ import { faEuroSign } from "@fortawesome/free-solid-svg-icons";
 library.add(faPlus, faTag, faCalendar, faEuroSign);
 
 export default defineComponent({
-  name: "createTransaction",
+  name: "CreateExpenses",
   components: {
     FontAwesomeIcon,
   },
@@ -107,3 +111,7 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+@import "@/scss/components/CreateExpenses.scss";
+</style>

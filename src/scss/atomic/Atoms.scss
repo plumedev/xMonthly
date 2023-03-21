@@ -4,13 +4,23 @@
 /********/
 /*
  * 1 - Headings
+ * 1.1 - Colors
  * 2 - Forms
  * 3 - Atoms
  * 3.1 - Boxes
- *
+ * 10 - Animation
 */
 
+body {
+    background-image: url("/src/assets/bg.png");
+    background-size: 100%;
+}
+
 /*** 1 - Headings ***/
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Test Financier Display Bold";
+}
+
 h1 {
     font-size: 4rem;
     font-weight: 600;
@@ -19,6 +29,7 @@ h1 {
 h2 {
     font-size: 2.625rem;
     font-weight: 600;
+    margin-top: 0;
 } 
 
 h3 {
@@ -40,6 +51,21 @@ h6 {
     font-size: 0.875rem;
     font-weight: 600;
 } 
+
+/*** 1.1 - Colors ***/
+
+.d-green {
+    color: $primary;
+}
+
+.green {
+    color: $secondary;
+}
+
+.l-green {
+    color: $tertiary;
+}
+    
 
 /*** 2 - Forms ***/
 
@@ -86,9 +112,10 @@ input {
 .box {
     margin-top: 25px;
     box-shadow: #0000000d 0px 6px 24px 0px, #00000014 0px 0px 0px 1px;
-    padding: 15px;
+    padding: 25px;
     border-radius: 6px;
     width: calc(100% - 30px);
+    background-color: $white;
 }
 
 /*** 3.2 - Buttons ***/
@@ -120,17 +147,16 @@ input {
     }
     &.green {
         &:hover {
-            background-color: $green;
-            border-color: $green;
+            background-color: $secondary;
+            border-color: $secondary;
         }
         &.inverted {
-            background-color: $green;
-            border-color: $green;
+            background-color: $secondary;
+            border-color: $secondary;
             color: $white;
             &:hover {
-                background-color: unset;
-                border-color: $black;
-                color: $black;
+                background-color: $primary;
+                border-color: $primary;
             }
         }
     }
@@ -179,8 +205,35 @@ input {
         border: none;
         &:hover {
             background-color: unset;
-            color: $green;
+            color: $primary;
             
         }
+    }
+    a {
+        color: $white;
+        text-decoration: unset;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/*** 10 - Animation ***/
+.progress {
+    &__bar {
+        animation: progress-bar 1000ms;
+    }
+}
+
+@keyframes progress-bar{
+    0% {
+        transform: scaleX(0);
+        opacity: .1;
+    }
+    85%,100% {
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(1);
     }
 }

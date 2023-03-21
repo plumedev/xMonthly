@@ -1,10 +1,5 @@
 <template>
   <div>
-    <div class="heading">
-      <h2>Mon budget</h2>
-    </div>
-    <TransactionsOverview />
-    <createTransaction />
     <div id="transactions-list" class="box">
       <div class="table">
         <aside class="table-head">
@@ -63,8 +58,6 @@ import { faArrowUpShortWide } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faSquareMinus as fasSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { faSquareMinus as farSquareMinus } from "@fortawesome/free-regular-svg-icons";
-import createTransaction from "@/components/createTransaction.vue";
-import TransactionsOverview from "@/components/TransactionsOverview.vue";
 import { defineComponent } from "vue";
 
 library.add(
@@ -83,9 +76,7 @@ export default defineComponent({
     };
   },
   components: {
-    createTransaction,
     FontAwesomeIcon,
-    TransactionsOverview,
   },
   computed: {
     ...mapState(["transactions"]),
@@ -127,6 +118,5 @@ export default defineComponent({
 </script>
 <style lang="scss">
 @import "@/scss/Variables.scss";
-@import "@/scss/createTransaction.scss";
-@import "@/scss/TransactionList.scss";
+@import "@/scss/components/ListExpenses.scss";
 </style>

@@ -1,0 +1,20 @@
+.activeMonth {
+    text-transform: capitalize;
+    min-width: 200px;
+    text-align: center;
+}
+
+.monthSelector {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin: auto;
+    h4 {
+        margin: 0;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 10px;
+    }
+}

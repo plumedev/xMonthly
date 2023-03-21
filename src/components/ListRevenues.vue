@@ -1,6 +1,6 @@
 <template>
   <div class="list-revenues">
-    <h2>Mes revenus</h2>
+    <h2>Dépenses de {{ currentMonth }}</h2>
     <div class="box">
       <div class="table">
         <aside class="table-head">
@@ -36,12 +36,15 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faSquareMinus as fasSquareMinus } from "@fortawesome/free-solid-svg-icons";
 import { faSquareMinus as farSquareMinus } from "@fortawesome/free-regular-svg-icons";
+import dayjs from "dayjs";
 
 library.add(fasSquareMinus, farSquareMinus);
 
 export default {
   data() {
-    return {};
+    return {
+      currentMonth: dayjs().format("MMMM"),
+    };
   },
   components: {
     FontAwesomeIcon,
@@ -73,6 +76,6 @@ export default {
 
 <style scoped lang="scss">
 @import "@/scss/Variables.scss";
-@import "@/scss/Atoms.scss";
-@import "@/scss/ListRevenues.scss";
+@import "@/scss/atomic/Atoms.scss";
+@import "@/scss/components/ListRevenues.scss";
 </style>
