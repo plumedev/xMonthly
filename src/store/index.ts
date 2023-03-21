@@ -102,10 +102,17 @@ const store = createStore({
         };
       });
     },
-    expensesPercentage(state, getters) {
+    expensesPercentage(state, getters): number {
       const totalRevenues = getters.totalMonthlyRevenues;
       const totalExpenses = getters.totalMonthlyExpenses;
       return Math.round((totalExpenses * 100) / totalRevenues);
+    },
+    availablePercentage(state, getters) {
+      const totalRevenues = getters.totalMonthlyRevenues;
+      const totalExpenses = getters.totalMonthlyExpenses;
+      const availablePercentage =
+        ((totalRevenues - totalExpenses) * 100) / totalRevenues;
+      return availablePercentage;
     },
     getActiveMonth(state) {
       return state.activeMonth;

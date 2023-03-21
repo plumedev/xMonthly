@@ -1,0 +1,66 @@
+#monthly-overview {
+    display: flex;
+    flex-direction: row;
+    .left {
+        width: 66%;
+        padding-right: 25px;
+    }
+    .right {
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+}
+
+#monthly-stats {
+    .stats-label {
+        display: flex;
+        justify-content: space-evenly;
+        .stat {
+            text-align: center;
+            .label {
+                font-weight: 700; // semi-bold
+            }
+            .amount {
+                font-weight: 700;
+            }
+        }
+    }
+    .stats-bar {
+        margin-top: 20px;
+        display: flex;
+        transition: all 1s ease-in-out;
+        .fees {
+            background-color: $primary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+        .savings {
+            background-color: $secondary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+        .available {
+            background-color: $tertiary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+    }
+}
+
+.actions-group {
+    margin-top: 30px;
+    display: flex;
+    button:first-of-type {
+        margin-right: 30px;
+    }
+}
+
+#budget-mood {
+    background-color: $grey;
+    height: 230px;
+    width: 230px;
+}

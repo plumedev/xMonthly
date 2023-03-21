@@ -1,7 +1,8 @@
 <template>
-  <div class="set-revenues">
-    <h3>Mes revenus</h3>
-
+  <div class="set-revenues box">
+    <div class="heading">
+      <h2>Ajout d'un revenu</h2>
+    </div>
     <form id="addRevenue" @submit.prevent="addRevenueSubmit">
       <div class="input-group">
         <label>
@@ -110,5 +111,5 @@ export default class SetRevenues extends Vue {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import "@/scss/SetRevenues.scss";
+@import "@/scss/components/CreateRevenues.scss";
 </style>
