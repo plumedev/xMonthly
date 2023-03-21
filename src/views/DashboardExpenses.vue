@@ -1,3 +1,4 @@
+/* eslint-disable */
 <template>
   <div id="dashboard-global">
     <MonthSelector />

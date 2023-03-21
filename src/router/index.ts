@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/global",
+    path: "/",
     name: "global",
     component: () => import("../views/DashboardGlobal.vue"),
   },
