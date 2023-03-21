@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <router-link to="/global">Dashboard</router-link>
+      <router-link to="/">Dashboard</router-link>
     </nav>
     <main>
       <router-view />
