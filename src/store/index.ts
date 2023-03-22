@@ -114,6 +114,12 @@ const store = createStore({
         ((totalRevenues - totalExpenses) * 100) / totalRevenues;
       return availablePercentage;
     },
+    availableAmount(state, getters) {
+      const totalRevenues = getters.totalMonthlyRevenues;
+      const totalExpenses = getters.totalMonthlyExpenses;
+      const availableAmount = totalRevenues - totalExpenses;
+      return availableAmount;
+    },
     getActiveMonth(state) {
       return state.activeMonth;
     },
