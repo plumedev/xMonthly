@@ -14,7 +14,7 @@
           </div> -->
           <div class="stat">
             <div class="label l-green">Disponible</div>
-            <div class="amount">358,24€</div>
+            <div class="amount">{{ monthlyAvailableAmount }}€</div>
           </div>
         </div>
         <div class="stats-bar">
@@ -25,7 +25,7 @@
           <div class="savings progress__bar" style="width: 0%"></div>
           <div
             class="available progress__bar"
-            :style="{ width: `${monthlyavailablePercentage}%` }"
+            :style="{ width: `${monthlyAvailablePercentage}%` }"
           ></div>
         </div>
       </div>
@@ -73,6 +73,7 @@ export default {
       "totalRevenues",
       "expensesPercentage",
       "availablePercentage",
+      "availableAmount",
       "totalMonthlyRevenues",
       "totalMonthlyExpenses",
     ]),
@@ -86,8 +87,11 @@ export default {
     monthlyFeesPercentage() {
       return this.expensesPercentage;
     },
-    monthlyavailablePercentage() {
+    monthlyAvailablePercentage() {
       return this.availablePercentage;
+    },
+    monthlyAvailableAmount() {
+      return this.availableAmount;
     },
   },
 };
