@@ -3,7 +3,11 @@
     <div class="heading">
       <h2>Ajout d'un revenu</h2>
     </div>
-    <form id="addRevenue" @submit.prevent="addRevenueSubmit">
+    <form
+      id="addRevenue"
+      class="flex flex-d-c"
+      @submit.prevent="addRevenueSubmit"
+    >
       <div class="input-group">
         <label>
           <font-awesome-icon :icon="['fa', 'tag']" class="input-icon" />
@@ -40,7 +44,7 @@
           >Veuillez entrer un montant</span
         >
       </div>
-      <button class="btn green inverted icon text" type="submit">
+      <button class="btn green inverted icon text full" type="submit">
         <font-awesome-icon :icon="['fa', 'plus']" />
         Ajouter
       </button>

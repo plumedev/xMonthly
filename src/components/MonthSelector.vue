@@ -1,10 +1,10 @@
 <template>
   <div class="monthSelector">
-    <button class="icon-only" @click="decrementMonth">
+    <button class="icon-only decrementMonth" @click="decrementMonth">
       <font-awesome-icon :icon="['fas', 'arrow-left']" />
     </button>
     <h4 class="activeMonth">{{ displayActiveMonth() }}</h4>
-    <button class="icon-only" @click="incrementMonth">
+    <button class="icon-only incrementMonth" @click="incrementMonth">
       <font-awesome-icon :icon="['fas', 'arrow-right']" />
     </button>
   </div>

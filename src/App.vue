@@ -11,6 +11,7 @@
 
 <style lang="scss">
 @import "@/scss/Variables.scss";
+@import "@/scss/Utils.scss";
 @import "@/scss/atomic/Layout.scss";
 @import "@/scss/atomic/Atoms.scss";
 @import "@/scss/atomic/Molecules.scss";

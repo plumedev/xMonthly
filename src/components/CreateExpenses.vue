@@ -3,7 +3,11 @@
     <div class="heading">
       <h2>Ajout d'une dépense</h2>
     </div>
-    <form id="createTransaction" @submit.prevent="handleSubmit">
+    <form
+      id="createTransaction"
+      class="flex flex-d-c"
+      @submit.prevent="handleSubmit"
+    >
       <div class="input-group">
         <label>
           <font-awesome-icon :icon="['fa', 'tag']" class="input-icon" />
@@ -40,7 +44,7 @@
           >Veuillez entrer un montant</span
         >
       </div>
-      <button class="btn green inverted icon text" type="submit">
+      <button class="btn green inverted icon text full" type="submit">
         <font-awesome-icon :icon="['fa', 'plus']" />
         Ajouter
       </button>
