@@ -10,6 +10,9 @@
         justify-content: flex-end;
         width: 33%;
     }
+    button {
+        margin: 30px 30px 0px 0px;
+    }
 }
 
 #monthly-stats {
@@ -51,16 +54,48 @@
     }
 }
 
-.actions-group {
-    margin-top: 30px;
-    display: flex;
-    button:first-of-type {
-        margin-right: 30px;
-    }
-}
-
 #budget-mood {
     background-color: $grey;
     height: 230px;
     width: 230px;
 }
+
+/*** 11 - Responsive ***/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    // Ajoutez vos styles pour les mobiles ici
+    #budget-mood,
+    .right {
+        display: none !important;
+    }
+    .left {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    // Ajoutez vos styles pour les petites résolutions ici
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    // Ajoutez vos styles pour les résolutions moyennes ici
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    // Ajoutez vos styles pour les grandes résolutions ici
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) and (max-width: 2047.98px) {
+    // Ajoutez vos styles pour les écrans 2K ici
+  }
+  
+  /* XXL devices (large desktops, 2048px and up) */
+  @media (min-width: 2048px) {
+    // Ajoutez vos styles pour les résolutions XXL ici
+  }

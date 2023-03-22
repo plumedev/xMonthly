@@ -29,14 +29,14 @@
           ></div>
         </div>
       </div>
-      <div class="actions-group">
+      <div class="flex">
         <button class="btn green inverted icon text" type="submit">
           <font-awesome-icon :icon="['fa', 'plus']" />
-          <router-link to="/expenses">Ajouter une dépense</router-link>
+          <router-link to="/expenses">une dépense</router-link>
         </button>
         <button class="btn green inverted icon text" type="submit">
           <font-awesome-icon :icon="['fa', 'plus']" />
-          <router-link to="/revenues">Ajouter un revenu</router-link>
+          <router-link to="/revenues">un revenu</router-link>
         </button>
       </div>
     </div>

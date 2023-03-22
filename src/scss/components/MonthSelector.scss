@@ -17,4 +17,9 @@
         justify-content: center;
         line-height: 10px;
     }
+    .incrementMonth,
+    .decrementMonth {
+        margin: 0;
+        min-width: unset;
+    }
 }
