@@ -2,6 +2,9 @@ import { createStore } from "vuex";
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
 
+import dataRevenues from "@/store/fake_data/data-revenues.json";
+import dataTransactions from "@/store/fake_data/data-transactions.json";
+
 dayjs.locale("fr");
 
 export interface Transaction {
@@ -93,7 +96,7 @@ const store = createStore({
           (total, revenue) => total + revenue.amount,
           0
         )
-      );
+      ).toFixed(2);
     },
     getRevenues(state) {
       return state.revenues.map((revenue) => {
@@ -117,7 +120,7 @@ const store = createStore({
     availableAmount(state, getters) {
       const totalRevenues = getters.totalMonthlyRevenues;
       const totalExpenses = getters.totalMonthlyExpenses;
-      const availableAmount = totalRevenues - totalExpenses;
+      const availableAmount = (totalRevenues - totalExpenses).toFixed(2);
       return availableAmount;
     },
     getActiveMonth(state) {
@@ -197,6 +200,16 @@ const store = createStore({
       const timestamp = Date.now();
       const random = Math.floor(Math.random() * 1000);
       return `${timestamp}-${random}`;
+    },
+    saveFakeDataToLocalStorage() {
+      // convertit les données en JSON
+      const fakeDataRevenues = JSON.stringify(dataRevenues);
+      const fakeDataTransaction = JSON.stringify(dataTransactions);
+
+      // sauvegarde les données dans le localStorage
+      localStorage.setItem("revenues", fakeDataRevenues);
+      localStorage.setItem("transactions", fakeDataTransaction);
+      location.reload();
     },
   },
   modules: {},

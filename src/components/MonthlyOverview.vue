@@ -41,7 +41,11 @@
       </div>
     </div>
     <div class="right">
-      <div id="budget-mood"></div>
+      <div id="budget-mood">
+        <button class="btn green inverted text" @click="this.importFakeData()">
+          Importer les données de démo
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +53,7 @@
 <script lang="ts">
 import dayjs from "dayjs";
 import "dayjs/locale/fr";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -77,6 +81,7 @@ export default {
       "totalMonthlyRevenues",
       "totalMonthlyExpenses",
     ]),
+    ...mapActions(["saveFakeDataToLocalStorage"]),
     // Fonction monthlyExpenses() qui récupère totalExpenses mappé juste avant
     monthlyExpenses() {
       return this.totalMonthlyExpenses;
@@ -92,6 +97,9 @@ export default {
     },
     monthlyAvailableAmount() {
       return this.availableAmount;
+    },
+    importFakeData() {
+      return this.saveFakeDataToLocalStorage;
     },
   },
 };
