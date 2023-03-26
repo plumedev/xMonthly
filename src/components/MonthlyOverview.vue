@@ -1,4 +1,7 @@
 <template>
+  <button class="btn green inverted text" @click="this.importFakeData()">
+    Importer les données de démo
+  </button>
   <div id="monthly-overview" class="box">
     <div class="left">
       <h2>Vue mensuelle</h2>
@@ -41,11 +44,7 @@
       </div>
     </div>
     <div class="right">
-      <div id="budget-mood">
-        <button class="btn green inverted text" @click="this.importFakeData()">
-          Importer les données de démo
-        </button>
-      </div>
+      <div id="budget-mood"></div>
     </div>
   </div>
 </template>
