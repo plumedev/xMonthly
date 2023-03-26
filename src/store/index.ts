@@ -209,7 +209,6 @@ const store = createStore({
       // sauvegarde les données dans le localStorage
       localStorage.setItem("revenues", fakeDataRevenues);
       localStorage.setItem("transactions", fakeDataTransaction);
-      location.reload();
     },
   },
   modules: {},
