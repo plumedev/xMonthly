@@ -1,0 +1,25 @@
+.table-content {
+    .amount {
+        text-align: start !important;
+    }
+    .remove-revenue {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .total-revenue {
+        border: none;
+        font-weight: 600;
+        .total-revenue__total {
+            font-weight: 900;
+            text-align: left;
+        }
+    }
+}
+
+button {
+    border: unset;
+}
+
+.list-revenues {
+    margin-top: 25px;
+}

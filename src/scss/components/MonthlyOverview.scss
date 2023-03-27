@@ -1,0 +1,100 @@
+#monthly-overview {
+    display: flex;
+    flex-direction: row;
+    .left {
+        width: 66%;
+        padding-right: 25px;
+    }
+    .right {
+        display: flex;
+        justify-content: flex-end;
+        width: 33%;
+    }
+    button {
+        margin: 30px 30px 0px 0px;
+    }
+}
+
+#monthly-stats {
+    .stats-label {
+        display: flex;
+        justify-content: space-evenly;
+        .stat {
+            text-align: center;
+            .label {
+                font-weight: 700; // semi-bold
+            }
+            .amount {
+                font-weight: 700;
+            }
+        }
+    }
+    .stats-bar {
+        margin-top: 20px;
+        display: flex;
+        transition: all 1s ease-in-out;
+        .fees {
+            background-color: $primary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+        .savings {
+            background-color: $secondary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+        .available {
+            background-color: $tertiary;
+            height: 20px;
+            transition: all 1s ease-in-out;
+            transform-origin: left;
+        }
+    }
+}
+
+#budget-mood {
+    height: 230px;
+    width: 230px;
+}
+
+/*** 11 - Responsive ***/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    // Ajoutez vos styles pour les mobiles ici
+    #budget-mood,
+    .right {
+        display: none !important;
+    }
+    .left {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    // Ajoutez vos styles pour les petites résolutions ici
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    // Ajoutez vos styles pour les résolutions moyennes ici
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    // Ajoutez vos styles pour les grandes résolutions ici
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) and (max-width: 2047.98px) {
+    // Ajoutez vos styles pour les écrans 2K ici
+  }
+  
+  /* XXL devices (large desktops, 2048px and up) */
+  @media (min-width: 2048px) {
+    // Ajoutez vos styles pour les résolutions XXL ici
+  }

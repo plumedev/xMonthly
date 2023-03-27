@@ -1,0 +1,95 @@
+.table {
+    .table-head {
+        display: grid;
+        grid-template-columns: 50% 10% 30% 10%;
+        h5:nth-child(3) {
+            text-align: end;
+        } 
+    }
+    .table-content {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        li {
+            display: grid;
+            grid-template-columns: 50% 10% 30% 10%;
+            list-style: none;
+            min-height: 38px;
+            padding-top: 15px;
+            border-bottom: 1px #F3F3F3 solid;
+            font-size: 1.125rem;
+            .label {
+                font-weight: 500;
+                line-height: 1.5rem;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .date {
+                color: #72727D;
+                display: flex;
+                align-items: center;
+            }
+            .amount {
+                font-weight: 900;
+                display: flex;
+                align-items: center;
+                text-align: end;
+                justify-content: flex-end;
+            }
+            .remove-transaction {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+            }
+        }
+    }
+}
+
+
+/*** 11 - Responsive ***/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .table {
+        .table-head {
+            grid-template-columns: 40% 25% 20% 15%;;
+        }
+        .table-content {
+            li {
+                grid-template-columns: 40% 25% 20% 15%;
+                .amount {
+                    justify-content: flex-start;
+                }
+                .remove {
+                    margin: 0;
+                }
+            }
+        }    
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    // Ajoutez vos styles pour les petites résolutions ici
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    // Ajoutez vos styles pour les résolutions moyennes ici
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    // Ajoutez vos styles pour les grandes résolutions ici
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) and (max-width: 2047.98px) {
+    // Ajoutez vos styles pour les écrans 2K ici
+  }
+  
+  /* XXL devices (large desktops, 2048px and up) */
+  @media (min-width: 2048px) {
+    // Ajoutez vos styles pour les résolutions XXL ici
+  }

@@ -1,0 +1,319 @@
+/* CSS TABLE OF CONTENT */
+
+
+/********/
+/*
+ * 1 - Headings
+ * 1.1 - Colors
+ * 2 - Forms
+ * 3 - Atoms
+ * 3.1 - Boxes
+ * 10 - Animation
+ * 11 - Responsive
+*/
+
+body {
+    background-image: url("/src/assets/bg.png");
+    background-size: 100%;
+}
+
+/*** 1 - Headings ***/
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Test Financier Display Bold";
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 600;
+} 
+
+h2 {
+    font-size: 2.625rem;
+    font-weight: 600;
+    margin-top: 0;
+} 
+
+h3 {
+    font-size: 2.25rem;
+    font-weight: 600;
+} 
+
+h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+} 
+
+h5 {
+    font-size: 1.125rem;
+    font-weight: 600;
+} 
+
+h6 {
+    font-size: 0.875rem;
+    font-weight: 600;
+} 
+
+/*** 1.1 - Colors ***/
+
+.d-green {
+    color: $primary;
+}
+
+.green {
+    color: $secondary;
+}
+
+.l-green {
+    color: $tertiary;
+}
+    
+
+/*** 2 - Forms ***/
+
+input {
+    border: 2px $black solid;
+    height: 42px;
+    min-width: 200px;
+    max-width: 320px;
+    margin: 0px 5px;
+    padding-left: 50px;
+    font-size: 1rem;
+    &:focus-visible {
+        border-radius: unset;
+        outline: unset;
+    }
+    &[type="date"] {
+        padding: 1px 2px 1px 50px;
+    }
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    label {
+        position: absolute;
+        margin-top: 9.5px;
+        margin-left: 20px;
+        font-size: 1.5rem;
+    }
+}
+
+.error {
+    text-indent: 5px;
+    color: #d40a0a;
+    padding: 5px 0px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+/*** 3 - Atoms ***/
+/*** 3.1 - Boxes ***/
+
+.box {
+    margin-top: 25px;
+    box-shadow: #0000000d 0px 6px 24px 0px, #00000014 0px 0px 0px 1px;
+    padding: 25px;
+    border-radius: 6px;
+    width: calc(100% - 30px);
+    background-color: $white;
+}
+
+/*** 3.2 - Buttons ***/
+.btn, button {
+    height: 48px;
+    width: auto;
+    min-width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.125s ease-in-out;
+    background-color: unset;
+    border: unset;
+    border: 2px $black solid;
+    border-radius: 2px;
+    padding: 0 15px 0 15px;
+    font-weight: 600;
+    font-size: 0.825rem;
+    &.square {
+        padding: 0 0 0 1px;
+    }
+    &.icon {
+        font-size: 1.125rem;
+    }
+    &.text {
+        svg {
+            margin-right: 10px;
+        }
+    }
+    &.green {
+        &:hover {
+            background-color: $secondary;
+            border-color: $secondary;
+        }
+        &.inverted {
+            background-color: $secondary;
+            border-color: $secondary;
+            color: $white;
+            &:hover {
+                background-color: $primary;
+                border-color: $primary;
+            }
+        }
+    }
+    &:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+    &:active {
+        background-color: rgba(0, 0, 0, 0.607);
+    }
+    &.remove {
+        border: unset;
+        background: unset;
+        font-size: 1.250rem;
+        display: flex;
+        padding: 0;
+        width: 18px;
+        height: 18px;
+        .fa-square-minus {
+            position: absolute;
+            transition: all 0.125s ease-in-out;
+        }
+        .fa-square-minus[data-prefix="far"] {
+            display: flex;
+            opacity: 1;
+        }
+        .fa-square-minus[data-prefix="fas"] {
+            display: flex;
+            opacity: 0;
+        }
+        &:hover {
+            cursor: pointer;
+            background: unset;
+            color: $black;
+            .fa-square-minus[data-prefix="far"] {
+                opacity: 0; 
+            }
+            .fa-square-minus[data-prefix="fas"] {
+                display: flex;
+                opacity: 1;
+            }
+        }
+    }
+    &.icon-only {
+        border: none;
+        &:hover {
+            background-color: unset;
+            color: $primary;
+            
+        }
+    }
+    a {
+        color: $white;
+        text-decoration: unset;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/*** 10 - Animation ***/
+.progress {
+    &__bar {
+        animation: progress-bar 1000ms;
+    }
+}
+
+@keyframes progress-bar{
+    0% {
+        transform: scaleX(0);
+        opacity: .1;
+    }
+    85%,100% {
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/*** 11 - Responsive ***/
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    // Ajoutez vos styles pour les mobiles ici
+    .btn, button {
+        height: 46px;
+        min-width: calc(50% - 15px);
+        padding: 0 7px 0 7px;
+        font-size: 1rem !important;
+        margin: 30px 30px 0px 0px;
+        &.full {
+            width: 100%;
+        }
+    }
+
+    .box {
+        width: 100%;
+        max-width: calc(100% - 50px);
+    }
+
+    .input-group {
+        margin-top: 15px;
+        width: 100% !important;
+        min-width: 100% !important;
+        input {
+            width: 100%;
+            max-width: calc(100% - 55px);
+            /* Réinitialise la largeur par défaut */
+            -webkit-appearance: none;
+            /* Supprime le style par défaut de l'élément */
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    // Ajoutez vos styles pour les petites résolutions ici
+  }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) and (max-width: 991.98px) {
+    // Ajoutez vos styles pour les résolutions moyennes ici
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) and (max-width: 1199.98px) {
+    // Ajoutez vos styles pour les grandes résolutions ici
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) and (max-width: 2047.98px) {
+    // Ajoutez vos styles pour les écrans 2K ici
+  }
+  
+  /* XXL devices (large desktops, 2048px and up) */
+  @media (min-width: 2048px) {
+    // Ajoutez vos styles pour les résolutions XXL ici
+  }
+
+  .alert {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    padding: 10px 0px 0 0;
+    color: $white;
+    background-color: $primary;
+  }
+
+body {
+    padding-top: 35px;
+}
