@@ -1,5 +1,5 @@
 <template>
-  <button class="btn green inverted text" @click="this.importFakeData()">
+  <button class="btn green inverted text" @click="importFakeData()">
     Importer les données de démo
   </button>
   <div id="monthly-overview" class="box">
@@ -80,7 +80,6 @@ export default {
       "totalMonthlyRevenues",
       "totalMonthlyExpenses",
     ]),
-    ...mapActions(["saveFakeDataToLocalStorage"]),
     // Fonction monthlyExpenses() qui récupère totalExpenses mappé juste avant
     monthlyExpenses() {
       return this.totalMonthlyExpenses;
@@ -97,8 +96,12 @@ export default {
     monthlyAvailableAmount() {
       return this.availableAmount;
     },
+  },
+  methods: {
+    ...mapActions(["saveFakeDataToLocalStorage"]),
     importFakeData() {
-      return this.saveFakeDataToLocalStorage;
+      this.saveFakeDataToLocalStorage();
+      location.reload();
     },
   },
 };
