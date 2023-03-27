@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="alert">Cet outils est en cours de développement.</div>
+    <div class="alert">Cette application est en cours de développement.</div>
     <nav>
       <router-link to="/">Dashboard</router-link>
     </nav>
