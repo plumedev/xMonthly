@@ -37,6 +37,44 @@ const store = createStore({
         };
       });
     },
+    annualExpenses(state) {
+      // Initialiser un tableau pour stocker les totaux de chaque mois
+      const monthlyTotals = Array.from({ length: 12 }, () => 0);
+      const currentYear = dayjs().startOf("year").year();
+
+      // Boucle sur chaque transaction
+      state.transactions.forEach((transaction) => {
+        // Vérifie si la transaction a lieu cette année
+        if (dayjs(transaction.date).year() === currentYear) {
+          // Obtient le mois de la transaction (entre 0 et 11)
+          const month = dayjs(transaction.date).month();
+          // Ajoute la valeur de la transaction à la somme pour ce mois
+          monthlyTotals[month] += transaction.amount;
+        }
+      });
+
+      // Retourne le tableau avec les totaux mensuels
+      return monthlyTotals;
+    },
+    annualRevenues(state) {
+      // Initialiser un tableau pour stocker les totaux de chaque mois
+      const monthlyTotals = Array.from({ length: 12 }, () => 0);
+      const currentYear = dayjs().startOf("year").year();
+
+      // Boucle sur chaque transaction
+      state.revenues.forEach((revenue) => {
+        // Vérifie si la transaction a lieu cette année
+        if (dayjs(revenue.date).year() === currentYear) {
+          // Obtient le mois de la transaction (entre 0 et 11)
+          const month = dayjs(revenue.date).month();
+          // Ajoute la valeur de la transaction à la somme pour ce mois
+          monthlyTotals[month] += revenue.amount;
+        }
+      });
+
+      // Retourne le tableau avec les totaux mensuels
+      return monthlyTotals;
+    },
     transactionsOfMonth: (state) => {
       const currentMonth = state.activeMonth.month();
       const currentYear = state.activeMonth.year();
