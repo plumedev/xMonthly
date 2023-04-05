@@ -1,12 +1,14 @@
 <template>
   <div class="box">
-    <h6>Les données sont statique pour le moment</h6>
-    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+    <Bar :data="chartData" :options="chartOptions" />
   </div>
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import { Bar } from "vue-chartjs";
+import { mapGetters } from "vuex";
+import { ComponentCustomProperties } from "vue";
 import {
   Chart as ChartJS,
   Title,
@@ -26,69 +28,63 @@ ChartJS.register(
   LinearScale
 );
 
-export default {
-  name: "AnnualOverview",
+interface CustomComponent extends ComponentCustomProperties {
+  annualExpenses: number[];
+  annualRevenues: number[];
+}
+
+export default defineComponent<object, object, CustomComponent>({
+  name: "AnnuelOverview",
   components: { Bar },
-  data() {
-    return {
-      chartData: {
+  computed: {
+    ...mapGetters(["annualExpenses", "annualRevenues"]),
+    chartData() {
+      return {
         labels: [
-          "Janvier",
-          "Février",
-          "Mars",
-          "Avril",
-          "Mai",
-          "Juin",
-          "Juillet",
-          "Août",
-          "Septembre",
-          "Octobre",
-          "Novembre",
-          "Décembre",
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jui",
+          "Aou",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Déc",
         ],
         datasets: [
           {
             label: "Dépenses",
-            backgroundColor: "#3B5649",
-            data: [
-              1212.38, 1212.38, 1212.38, 1212.38, 1212.38, 1212.38, 7, 8, 3, 1,
-              15, 9,
-            ],
+            data: this.annualExpenses,
+            backgroundColor: ["#3B5649"],
+            borderWidth: 1,
           },
           {
             label: "Disponible",
             backgroundColor: "#09E77C",
-            data: [
-              528.96, 711.24, 287.62, 662.62, 577.07, 662.62, 1754.0, 1754.0,
-              1754.0, 1754.0, 1754.0, 1754.0,
-            ],
+            data: this.annualRevenues,
             staked: true,
           },
         ],
-      },
-      chartOptions: void {
-        responsive: true,
-        maintainAspectRatio: true,
+      };
+    },
+    chartOptions() {
+      return {
         scales: {
-          xAxes: [
-            {
-              stacked: true,
-            },
-          ],
           yAxes: [
             {
-              stacked: true,
+              ticks: {
+                beginAtZero: true,
+              },
             },
           ],
         },
-        legend: {
-          labels: {
-            usePointStyle: true,
-          },
-        },
-        minHeight: 215,
-      },
-    };
+        responsive: true,
+        maintainAspectRatio: true,
+      };
+    },
   },
-};
+});
 </script>
