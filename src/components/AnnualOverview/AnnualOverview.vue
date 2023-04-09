@@ -1,5 +1,6 @@
 <template>
   <div class="box">
+    <h2>Vue annuelle</h2>
     <Bar :data="chartData" :options="chartOptions" />
   </div>
 </template>
