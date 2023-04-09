@@ -1,10 +1,3 @@
-<template>
-  <div class="box">
-    <Bar :data="chartData" :options="chartOptions" />
-  </div>
-</template>
-
-<script lang="ts">
 import { defineComponent } from "vue";
 import { Bar } from "vue-chartjs";
 import { mapGetters } from "vuex";
@@ -34,7 +27,7 @@ interface CustomComponent extends ComponentCustomProperties {
 }
 
 export default defineComponent<object, object, CustomComponent>({
-  name: "AnnuelOverview",
+  name: "annualOverview",
   components: { Bar },
   computed: {
     ...mapGetters(["annualExpenses", "annualRevenues"]),
@@ -59,7 +52,6 @@ export default defineComponent<object, object, CustomComponent>({
             label: "Dépenses",
             data: this.annualExpenses,
             backgroundColor: ["#3B5649"],
-            borderWidth: 1,
           },
           {
             label: "Disponible",
@@ -87,4 +79,3 @@ export default defineComponent<object, object, CustomComponent>({
     },
   },
 });
-</script>

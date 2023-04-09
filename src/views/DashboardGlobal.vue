@@ -2,21 +2,21 @@
   <div id="dashboard-global">
     <MonthSelector />
     <MonthlyOverview />
-    <AnnuelOverview />
+    <annualOverview />
   </div>
 </template>
 
 <script lang="ts">
-import MonthSelector from "@/components/MonthSelector.vue";
-import MonthlyOverview from "@/components/MonthlyOverview.vue";
-import AnnuelOverview from "@/components/AnnuelOverview.vue";
+import MonthSelector from "@/components/MonthSelector/MonthSelector.vue";
+import MonthlyOverview from "@/components/MonthlyOverview/MonthlyOverview.vue";
+import annualOverview from "@/components/AnnualOverview/AnnualOverview.vue";
 
 export default {
   name: "dashboard-global",
   components: {
     MonthSelector,
     MonthlyOverview,
-    AnnuelOverview,
+    annualOverview,
   },
 };
 </script>
