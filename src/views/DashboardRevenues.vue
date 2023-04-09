@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import MonthSelector from "@/components/MonthSelector.vue";
-import ListRevenues from "@/components/ListRevenues.vue";
-import CreateRevenues from "@/components/CreateRevenues.vue";
+import MonthSelector from "@/components/MonthSelector/MonthSelector.vue";
+import ListRevenues from "@/components/ListRevenues/ListRevenues.vue";
+import CreateRevenues from "@/components/CreateRevenues/CreateRevenues.vue";
 
 export default {
   name: "dashboard-global",
