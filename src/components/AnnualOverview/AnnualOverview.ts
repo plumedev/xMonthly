@@ -24,6 +24,8 @@ ChartJS.register(
 interface CustomComponent extends ComponentCustomProperties {
   annualExpenses: number[];
   annualRevenues: number[];
+  chartOptions: object;
+  chartData: object;
 }
 
 export default defineComponent<object, object, CustomComponent>({
@@ -52,12 +54,16 @@ export default defineComponent<object, object, CustomComponent>({
             label: "Dépenses",
             data: this.annualExpenses,
             backgroundColor: ["#3B5649"],
+            pointStyle: "rectRounded",
+            pointRadius: 6,
           },
           {
             label: "Disponible",
             backgroundColor: "#09E77C",
             data: this.annualRevenues,
             staked: true,
+            pointStyle: "circle",
+            pointRadius: 6,
           },
         ],
       };
